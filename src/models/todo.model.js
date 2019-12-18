@@ -21,3 +21,5 @@ class Todo {
     this.p = p;
   }
 }
+
+export default Todo;
