@@ -18,41 +18,39 @@
       <div class="card" style="width: 18rem;">
         <div class="project-header"><h5>First Project</h5></div>
         <div class="card-body">
-          <div class="accordion" id="accordionExample">
-            <div class="card">
-              <div class="card-header" id="headingOne">
-                <h2 class="mb-0">
-                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Todo Task Item #1
-                  </button>
-                </h2>
-                <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-                  <div class="btn-group mr-2" role="group" aria-label="First group">
-                    <button type="button" class="btn btn-secondary">√</button>
-                    <button type="button" class="btn btn-secondary">X</button>
-                    <select class="custom-select">
-                      <option selected>Priority</option>
-                      <option value="1">1</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="1">4</option>
-                      <option value="2">5</option>
-                    </select>
-                  </div>
+          <div class="todolist not-done">
+            <h1>Todos</h1>
+            <input type="text" class="form-control add-todo" placeholder="Add todo">
+            <button id="checkAll" class="btn btn-success">Mark all as done</button>
+
+            <hr>
+            <ul id="sortable" class="list-unstyled">
+              <li class="ui-state-default">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" value="" />First task</label>
                 </div>
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                  <div class="card-body">
-                    <label id="duedate">Due Date: 20/12/2019</label></br>
-                    Lorem ipsum.
-                  </div>
+              </li>
+              <li class="ui-state-default">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" value="" />Second task</label>
                 </div>
-              </div>
+              </li>
+              <li class="ui-state-default">
+                <div class="checkbox">
+                  <label>
+                    <input type="checkbox" value="" />Third task</label>
+                </div>
+              </li>
+            </ul>
+            <div class="todo-footer">
+              <strong><span class="count-todos"></span></strong> Items Left
             </div>
           </div>
         </div>
         <div class="newtask">
-          <button type="button" class="btn btn-primary">New Task</button>
-          <button type="button" class="btn btn-primary">Archive</button>
+          <button type="button" class="btn btn-danger">Archive</button>
         </div>
       </div>
     </div>
