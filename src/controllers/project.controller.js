@@ -1,8 +1,9 @@
 import AppService from '../app.service';
 
 class ProjectController {
-  static newTodo(todo) {
-    AppService.todos.push(todo);
+  static newTodo(projectId, todo) {
+    AppService.projects.find(project => project.id===projectId).todos.push(todo);
+    console.log(AppService.projects)
   }
 
   static removeTodo(todo) {
@@ -12,3 +13,5 @@ class ProjectController {
     AppService.todos.splice(index, 1);
   }
 }
+
+export default ProjectController

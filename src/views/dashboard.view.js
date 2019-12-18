@@ -5,7 +5,7 @@ class Dashboard {
     let response = `
       <div class="projects container">
         <div class="header">
-        <button type="button" class="btn btn-primary">New Project</button>
+        <button id="add-new-project" type="button" class="btn btn-primary">New Project</button>
         </div>
         <div class="row">`;
 

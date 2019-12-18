@@ -1,7 +1,10 @@
+const uuidv1 = require('uuid/v1');
+
 class Project {
   constructor(name, todos = []) {
     this.name = name;
     this.todos = todos;
+    this.id = uuidv1();
   }
 
   set name(n) {
