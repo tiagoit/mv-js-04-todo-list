@@ -2,7 +2,10 @@ import TodoView from './todo.view';
 
 class ProjectsView {
   static render(projects) {
-    let html = '';
+    let html = `
+      <input type="text" id="new-project-name">
+      <div class="btn btn-primary" id="add-project">New Project</div>
+    `;
     projects.forEach(project => {
       html += `
         <div class="card m-2">

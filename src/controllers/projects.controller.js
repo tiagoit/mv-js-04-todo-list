@@ -1,19 +1,19 @@
-import AppService from '../app.service';
 import ProjectModel from '../models/project.model';
 import ProjectsView from '../views/projects.view';
 import TodoModel from '../models/todo.model';
 
 class ProjectsController {
   constructor() {
-    this.projects = JSON.parse(localStorage.getItem('projects')) || [new ProjectModel('Default')];
+    // this.projects = JSON.parse(localStorage.getItem('projects')) || [new ProjectModel('Default')];
+    this.projects = [new ProjectModel('Default')];
     this.renderView();
   }
 
   addProject(name) {
-    this.projects.push(new ProjectModel(name));
+    const newProject = new ProjectModel(name);
+    this.projects.push(newProject);
     localStorage.setItem('projects', JSON.stringify(this.projects));
-    console.log("click")
-    this.renderView()
+    this.renderView();
   }
 
   addTodo(projectId, todo) {
@@ -48,7 +48,15 @@ class ProjectsController {
 
   renderView() {
     ProjectsView.render(this.projects);
+    this.bindEvents();
+    document.getElementById('add-project').addEventListener('click', ev => {
+      console.log('addProject btn click');
+      const name = document.getElementById('new-project-name').value;
+      this.addProject(name);
+    });
+  }
 
+  bindEvents() {
     document.querySelector('#add-todo > button')
       .addEventListener('click', ev => {
         const todo = new TodoModel(document.querySelector('#add-todo > input').value);
@@ -77,11 +85,6 @@ class ProjectsController {
         this.toggleDoneState(ev.target.dataset.pid, ev.target.dataset.id);
       });
     });
-
-    document.getElementById('add-project').addEventListener('click', ev => {
-      const name = document.getElementById('new-project-name').value;
-      this.addProject(name);
-    })
   }
 }
 
