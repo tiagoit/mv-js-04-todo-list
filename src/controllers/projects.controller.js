@@ -4,8 +4,7 @@ import TodoModel from '../models/todo.model';
 
 class ProjectsController {
   constructor() {
-    // this.projects = JSON.parse(localStorage.getItem('projects')) || [new ProjectModel('Default')];
-    this.projects = [new ProjectModel('Default')];
+    this.projects = JSON.parse(localStorage.getItem('projects')) || [new ProjectModel('Default')];
     this.renderView();
   }
 
@@ -50,7 +49,6 @@ class ProjectsController {
     ProjectsView.render(this.projects);
     this.bindEvents();
     document.getElementById('add-project').addEventListener('click', ev => {
-      console.log('addProject btn click');
       const name = document.getElementById('new-project-name').value;
       this.addProject(name);
     });
