@@ -9,6 +9,12 @@ class ProjectsController {
     this.renderView();
   }
 
+  addProject(name) {
+    this.projects.push(new ProjectModel(name));
+    localStorage.setItem('projects', JSON.stringify(this.projects));
+    this.renderView()
+  }
+
   addTodo(projectId, todo) {
     this.projects.find(p => p.id === projectId).todos.push(todo);
     this.renderView();
@@ -70,6 +76,11 @@ class ProjectsController {
         this.toggleDoneState(ev.target.dataset.pid, ev.target.dataset.id);
       });
     });
+
+    document.getElementById('add-project').addEventListener('click', ev => {
+      const name = document.getElementById('new-project-name').value;
+      this.addProject(name);
+    })
   }
 }
 

@@ -4,8 +4,9 @@ class DashboardView {
   static render() {
     const html = `
       <div class="container">
+        <input type="text" id="new-project-name">
         <div class="btn btn-primary" id="add-project">New Project</div>
-        <div class="row justify-content-around mt-3">
+        <div class="row mt-3">
           <app-projects></app-projects>
         </div>
       </div>`;

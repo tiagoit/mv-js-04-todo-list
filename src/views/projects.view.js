@@ -4,7 +4,7 @@ class ProjectsView {
   static render(projects) {
     let html = '';
     projects.forEach(project => {
-      html = `
+      html += `
         <div class="card">
           <div class="card-header"><h3>${project.name}</h3></div>
           <div class="card-body">
