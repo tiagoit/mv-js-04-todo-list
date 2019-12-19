@@ -41,8 +41,7 @@ class TodoView {
               </div>
               <textarea class="form-control" aria-label="With textarea">${todo.priority}</textarea>
             </div>
-            </div>
-            <button class="btn-success w-100">Save</button>
+            <button class="btn btn-success w-100">Save</button>
           </div>
         </div>
       </li>
