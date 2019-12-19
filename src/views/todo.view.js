@@ -24,7 +24,7 @@ class TodoView {
               <div class="input-group-prepend">
                 <span class="input-group-text">Due Date</span>
               </div>
-              <textarea class="form-control due-date" aria-label="With textarea">${todo.dueDate && todo.dueDate.toISOString().slice(0, 10)}</textarea>
+              <textarea class="form-control due-date" aria-label="With textarea">${todo.dueDate || ''}</textarea>
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">

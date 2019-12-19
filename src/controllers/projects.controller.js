@@ -26,7 +26,7 @@ class ProjectsController {
     const project = this.projects.find(p => p.id === projectId);
     const todo = project.todos.find(t => t.id === todoId);
     todo.description = description;
-    todo.dueDate = new Date(dueDate) || undefined;
+    todo.dueDate = dueDate ? new Date(dueDate) : null;
     todo.priority = priority;
     this.renderView();
     localStorage.setItem('projects', JSON.stringify(this.projects));

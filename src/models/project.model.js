@@ -6,17 +6,6 @@ class ProjectModel {
     this.todos = todos;
     this.id = uuidv1();
   }
-
-  set name(n) {
-    const validator = RegExp(/^\w{3,}$/);
-    if (!validator.test(n)) throw new Error('Invalid name, only alphanumeric, min 3.');
-
-    this.privateName = n;
-  }
-
-  get name() {
-    return this.privateName;
-  }
 }
 
 export default ProjectModel;
