@@ -1,7 +1,7 @@
 const uuidv1 = require('uuid/v1');
 
 class TodoModel {
-  constructor(title, description = '', dueDate = '', doneDate = '', priority = 1) {
+  constructor(title, description = '', dueDate = null, doneDate = null, priority = 1) {
     this.id = uuidv1();
     this.title = title;
     this.description = description;
@@ -12,10 +12,6 @@ class TodoModel {
 
   complete() {
     this.doneDate = new Date();
-  }
-
-  isCompleted() {
-    return !!this.doneDate;
   }
 
   set priority(p) {

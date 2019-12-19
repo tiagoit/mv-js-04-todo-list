@@ -5,10 +5,11 @@ class TodoView {
    * @returns {string}
    */
   static html(todo, projectId) {
+    const checked = todo.doneDate ? 'checked' : '';
     return `
       <li>
         <div class="d-flex">
-          <input type="checkbox" class ="isDone" checked=${todo.isCompleted()} />
+          <input type="checkbox" class="is-done" ${checked} data-id="${todo.id}" data-pid="${projectId}"/>
           <a class="btn btn-light" data-toggle="collapse" href="#todo-${todo.id}" role="button">${todo.title}</a>
         </div>
         <div class="collapse" id="todo-${todo.id}">
