@@ -1,6 +1,6 @@
 const uuidv1 = require('uuid/v1');
 
-class Project {
+class ProjectModel {
   constructor(name, todos = []) {
     this.name = name;
     this.todos = todos;
@@ -11,12 +11,12 @@ class Project {
     const validator = RegExp(/^\w{3,}$/);
     if (!validator.test(n)) throw new Error('Invalid name, only alphanumeric, min 3.');
 
-    this._name = n;
+    this.privateName = n;
   }
 
   get name() {
-    return this._name;
+    return this.privateName;
   }
 }
 
-export default Project;
+export default ProjectModel;

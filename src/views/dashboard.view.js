@@ -1,21 +1,17 @@
-import ProjectView from './project.view';
+import ProjectsView from './projects.view';
 
-class Dashboard {
-  static view(projects) {
-    let response = `
-      <div class="projects container">
-        <div class="header">
-        <button id="add-new-project" type="button" class="btn btn-primary">New Project</button>
+class DashboardView {
+  static render() {
+    const html = `
+      <div class="container">
+        <div class="btn btn-primary" id="add-project">New Project</div>
+        <div class="row">
+          <app-projects></app-projects>
         </div>
-        <div class="row">`;
+      </div>`;
 
-    projects.forEach((project) => {
-      response += ProjectView.view(project);
-    });
-
-    response += '</div>';
-    return response;
+    document.getElementsByTagName('router-outlet')[0].innerHTML = html;
   }
 }
 
-export default Dashboard;
+export default DashboardView;

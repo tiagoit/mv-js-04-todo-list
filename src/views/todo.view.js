@@ -1,4 +1,5 @@
 // import Todo from '../components/todo.model';
+const uuidv1 = require('uuid/v1');
 
 class TodoView {
   /**
@@ -6,16 +7,20 @@ class TodoView {
    * @param todo: Todo
    * @returns {string}
    */
-  static view(todo) {
+  static html(todo) {
+    const id = uuidv1().slice(0, 8);
     return `
-      <li class="ui-state-default">
-        <div class="checkbox">
+      <li>
+        <div class="d-flex">
           <input type="checkbox" value="" />
-          <a class="btn btn-light" data-toggle="collapse" href="#collapseExample0" role="button" aria-expanded="false" aria-controls="collapseExample0">
-          ${todo.name} ${todo.dueDate.toISOString().slice(0, 10)}
-          </a>
-          <div class="collapse" id="collapseExample0">
-          <div class="card card-body">${todo.description}</div>
+          <div class="btn btn-light" data-toggle="collapse" href="#${id}" role="button">${todo.title}</div>
+        </div>
+        <div class="collapse" id="${id}">
+          <div class="card card-body">
+            Description: ${todo.description}
+            Due date: ${todo.dueDate && todo.dueDate.toISOString().slice(0, 10)}
+            Done date: ${todo.doneDate} 
+            Priority: ${todo.priority}
           </div>
         </div>
       </li>

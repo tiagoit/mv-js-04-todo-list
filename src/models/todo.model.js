@@ -1,5 +1,5 @@
-class Todo {
-  constructor(title, description, dueDate, doneDate, priority) {
+class TodoModel {
+  constructor(title, description = '', dueDate = '', doneDate = '', priority = 1) {
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
@@ -22,4 +22,4 @@ class Todo {
   }
 }
 
-export default Todo;
+export default TodoModel;
