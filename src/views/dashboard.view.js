@@ -7,7 +7,7 @@ class DashboardView {
         <input type="text" id="new-project-name">
         <div class="btn btn-primary" id="add-project">New Project</div>
         <div class="row mt-3">
-          <app-projects></app-projects>
+          <app-projects class="d-flex flex-wrap"></app-projects>
         </div>
       </div>`;
 

@@ -12,6 +12,7 @@ class ProjectsController {
   addProject(name) {
     this.projects.push(new ProjectModel(name));
     localStorage.setItem('projects', JSON.stringify(this.projects));
+    console.log("click")
     this.renderView()
   }
 

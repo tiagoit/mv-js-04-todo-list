@@ -5,7 +5,7 @@ class ProjectsView {
     let html = '';
     projects.forEach(project => {
       html += `
-        <div class="card">
+        <div class="card m-2">
           <div class="card-header"><h3>${project.name}</h3></div>
           <div class="card-body">
             <h4>Todos</h4>
