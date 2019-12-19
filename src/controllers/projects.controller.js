@@ -10,25 +10,54 @@ class ProjectsController {
   }
 
   addTodo(projectId, todo) {
-    this.projects.find(project => project.id === projectId).todos.push(todo);
+    this.projects.find(p => p.id === projectId).todos.push(todo);
     this.renderView();
-    console.log(this.projects);
+  }
+
+  removeTodo(projectId, todoId) {
+    const project = this.projects.find(p => p.id === projectId);
+    project.todos = project.todos.filter(t => t.id !== todoId);
+    this.renderView();
+  }
+
+  editTodo(projectId, todoId, description, dueDate, doneDate, priority) {
+    const project = this.projects.find(p => p.id === projectId);
+    const todo = project.todos.find(t => t.id === todoId);
+    todo.description = description;
+    // TODO: Date object
+    todo.dueDate = new Date(dueDate) || undefined;
+    todo.doneDate = new Date(doneDate) || undefined;
+    todo.priority = priority;
+    this.renderView();
   }
 
   renderView() {
     ProjectsView.render(this.projects);
-    document.querySelector('#add-todo > button').addEventListener('click', ev => {
-      const todo = new TodoModel(document.querySelector('#add-todo > input').value);
-      this.addTodo(ev.target.dataset.id, todo);
+
+    document.querySelector('#add-todo > button')
+      .addEventListener('click', ev => {
+        const todo = new TodoModel(document.querySelector('#add-todo > input').value);
+        this.addTodo(ev.target.dataset.id, todo);
+      });
+
+    document.querySelectorAll('#todo-actions > button.delete-todo').forEach(el => {
+      el.addEventListener('click', ev => {
+        this.removeTodo(ev.target.dataset.pid, ev.target.dataset.id);
+      });
+    });
+
+    document.querySelectorAll('#todo-actions > button.edit-todo').forEach(el => {
+      el.addEventListener('click', ev => {
+        const form = document.getElementById(`todo-${ev.target.dataset.id}`);
+        const description = form.querySelector('.description').value;
+        const dueDate = form.querySelector('.due-date').value;
+        const doneDate = form.querySelector('.done-date').value;
+        const priority = form.querySelector('.priority').value;
+        this.editTodo(ev.target.dataset.pid, ev.target.dataset.id, 
+          description, dueDate, doneDate, priority);
+      });
     });
   }
-
-  // removeTodo(todo) {
-  //   const index = this.todos.indexOf(todo);
-  //   if (index === -1) throw new Error('Todo not found!');
-  //
-  //   AppService.todos.splice(index, 1);
-  // }
 }
 
 export default ProjectsController;

@@ -1,5 +1,8 @@
+const uuidv1 = require('uuid/v1');
+
 class TodoModel {
   constructor(title, description = '', dueDate = '', doneDate = '', priority = 1) {
+    this.id = uuidv1();
     this.title = title;
     this.description = description;
     this.dueDate = dueDate;
@@ -16,9 +19,13 @@ class TodoModel {
   }
 
   set priority(p) {
-    if (![1, 2, 3, 4, 5].includes(p)) throw new Error('Invalid Argument');
+    if (![1, 2, 3, 4, 5].includes(parseInt(p, 10))) throw new Error('Invalid Argument');
 
-    this.p = p;
+    this.private_p = p;
+  }
+
+  get priority() {
+    return this.private_p;
   }
 }
 

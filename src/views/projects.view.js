@@ -17,7 +17,7 @@ class ProjectsView {
             <ul id="sortable" class="list-unstyled">`;
 
       project.todos.forEach((todo) => {
-        html += TodoView.html(todo);
+        html += TodoView.html(todo, project.id);
       });
 
       html += `
