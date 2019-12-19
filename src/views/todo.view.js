@@ -8,7 +8,7 @@ class TodoView {
     return `
       <li>
         <div class="d-flex">
-          <input type="checkbox" value="" />
+          <input type="checkbox" class ="isDone" checked=${todo.isCompleted()} />
           <a class="btn btn-light" data-toggle="collapse" href="#todo-${todo.id}" role="button">${todo.title}</a>
         </div>
         <div class="collapse" id="todo-${todo.id}">
@@ -25,12 +25,6 @@ class TodoView {
               </div>
               <textarea class="form-control due-date" aria-label="With textarea">${todo.dueDate && todo.dueDate.toISOString().slice(0, 10)}</textarea>
             </div>
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text">Done date</span>
-              </div>
-              <textarea class="form-control done-date" aria-label="With textarea">${todo.doneDate}</textarea>
-            </div>  
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text">Priority</span>

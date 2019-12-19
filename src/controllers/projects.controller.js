@@ -14,19 +14,24 @@ class ProjectsController {
     this.renderView();
   }
 
+  markAsDone(projectID, todo) {
+    const project = this.projects.find(p => p.id === projectId);
+    const todo = project.todos.find(t => t.id === todoId);
+    todo.doneDate = new Date();
+  }
+
   removeTodo(projectId, todoId) {
     const project = this.projects.find(p => p.id === projectId);
     project.todos = project.todos.filter(t => t.id !== todoId);
     this.renderView();
   }
 
-  editTodo(projectId, todoId, description, dueDate, doneDate, priority) {
+  editTodo(projectId, todoId, description, dueDate, priority) {
     const project = this.projects.find(p => p.id === projectId);
     const todo = project.todos.find(t => t.id === todoId);
     todo.description = description;
     // TODO: Date object
     todo.dueDate = new Date(dueDate) || undefined;
-    todo.doneDate = new Date(doneDate) || undefined;
     todo.priority = priority;
     this.renderView();
   }
@@ -51,12 +56,15 @@ class ProjectsController {
         const form = document.getElementById(`todo-${ev.target.dataset.id}`);
         const description = form.querySelector('.description').value;
         const dueDate = form.querySelector('.due-date').value;
-        const doneDate = form.querySelector('.done-date').value;
         const priority = form.querySelector('.priority').value;
         this.editTodo(ev.target.dataset.pid, ev.target.dataset.id, 
-          description, dueDate, doneDate, priority);
+          description, dueDate, priority);
       });
     });
+
+    document.querySelectorAll('input.isDone').forEach( el => {
+      el.addEventListener('click', markAsDone(projectID, todo))
+    })
   }
 }
 
