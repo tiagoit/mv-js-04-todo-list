@@ -5,7 +5,7 @@ class DashboardView {
     const html = `
       <div class="container">
         <div class="row mt-3">
-          <app-projects class="d-flex flex-wrap"></app-projects>
+          <app-projects></app-projects>
         </div>
       </div>`;
 

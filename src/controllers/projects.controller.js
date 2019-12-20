@@ -55,20 +55,20 @@ class ProjectsController {
   }
 
   bindEvents() {
-    document.querySelectorAll('#add-todo > button').forEach(el => {
+    document.querySelectorAll('.add-todo > button').forEach(el => {
       el.addEventListener('click', ev => {
-        const todo = new TodoModel(document.querySelector('#add-todo > input').value);
+        const todo = new TodoModel(ev.target.previousSibling.previousSibling.value);
         this.addTodo(ev.target.dataset.id, todo);
       });
     });
 
-    document.querySelectorAll('#todo-actions > button.delete-todo').forEach(el => {
+    document.querySelectorAll('.todo-actions > button.delete-todo').forEach(el => {
       el.addEventListener('click', ev => {
         this.removeTodo(ev.target.dataset.pid, ev.target.dataset.id);
       });
     });
 
-    document.querySelectorAll('#todo-actions > button.edit-todo').forEach(el => {
+    document.querySelectorAll('.todo-actions > button.edit-todo').forEach(el => {
       el.addEventListener('click', ev => {
         const form = document.getElementById(`todo-${ev.target.dataset.id}`);
         const description = form.querySelector('.description').value;
