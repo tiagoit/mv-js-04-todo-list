@@ -55,7 +55,7 @@ class ProjectsController {
   }
 
   bindEvents() {
-    document.querySelectorAll('#add-todo > button') .forEach( el=> {
+    document.querySelectorAll('#add-todo > button').forEach(el => {
       el.addEventListener('click', ev => {
         const todo = new TodoModel(document.querySelector('#add-todo > input').value);
         this.addTodo(ev.target.dataset.id, todo);
