@@ -1,4 +1,3 @@
-import AppService from './app.service';
 import DashboardController from './controllers/dashboard.controller';
 
 class Framework {
@@ -12,7 +11,8 @@ class Framework {
     };
 
     const route = handlers[routeName];
-    AppService.activeController = new DashboardController();
+    const Controller = handlers[routeName].controller;
+    return new Controller();
   }
 }
 
