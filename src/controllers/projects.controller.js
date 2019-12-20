@@ -55,11 +55,12 @@ class ProjectsController {
   }
 
   bindEvents() {
-    document.querySelector('#add-todo > button')
-      .addEventListener('click', ev => {
+    document.querySelectorAll('#add-todo > button') .forEach( el=> {
+      el.addEventListener('click', ev => {
         const todo = new TodoModel(document.querySelector('#add-todo > input').value);
         this.addTodo(ev.target.dataset.id, todo);
       });
+    });
 
     document.querySelectorAll('#todo-actions > button.delete-todo').forEach(el => {
       el.addEventListener('click', ev => {
